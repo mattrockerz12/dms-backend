@@ -15,7 +15,9 @@ class ProjectDocumentResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'compliance_document' => $this->compliance_document
+            'document' => $this->document,
+            'project_document_detail_count' => $this->project_document_detail_count,
+            'latest_upload_by_date_count' => $this->latest_upload_by_date_count,
         ];
     }
 }

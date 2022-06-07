@@ -11,7 +11,7 @@ class ProjectDocument extends Model
 
     protected $guarded = [];
 
-    public function compliance_document(){
+    public function document(){
         return $this->belongsTo(Document::class);
     }
 

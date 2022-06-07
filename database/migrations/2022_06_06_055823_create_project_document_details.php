@@ -15,7 +15,6 @@ class CreateProjectDocumentDetails extends Migration
     {
         Schema::create('project_document_details', function (Blueprint $table) {
             $table->id();
-            $table->integer('project_document_id')->nullable();
             $table->integer('user_id')->nullable();
             $table->string('name')->nullable();
             $table->string('slug')->nullable();

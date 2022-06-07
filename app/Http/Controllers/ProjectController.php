@@ -60,6 +60,8 @@ class ProjectController extends Controller
         $cpd = ProjectDocument::where('project_id', $id);
         $project_documents = $cpd->withCount('project_document_detail', 'latest_upload_by_date')->get();
 
-        return $project_documents;
+        return ProjectDocumentResource::collection($project_documents);
     }
+
+
 }
