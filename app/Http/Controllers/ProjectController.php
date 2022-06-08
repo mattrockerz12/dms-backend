@@ -13,7 +13,7 @@ use App\Http\Resources\ProjectDocumentResource;
 class ProjectController extends Controller
 {
     public function index() {
-        return ProjectResource::collection(Project::all());
+        return ProjectResource::collection(Project::withCount('document')->paginate(5));
     }
 
     public function show($id) {

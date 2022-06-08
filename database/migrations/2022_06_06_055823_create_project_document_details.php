@@ -15,15 +15,10 @@ class CreateProjectDocumentDetails extends Migration
     {
         Schema::create('project_document_details', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->nullable();
+            $table->unsignedBigInteger('user_id');
             $table->string('name')->nullable();
-            $table->string('slug')->nullable();
-            $table->string('version')->nullable();
-            $table->timestamp('date_submitted')->nullable();
-            $table->string('filename')->nullable();
-            $table->string('extension')->nullable();
-            $table->string('path')->nullable();
-            $table->string('mime_type')->nullable();
+            $table->string('description')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

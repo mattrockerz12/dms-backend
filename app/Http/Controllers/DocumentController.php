@@ -10,7 +10,7 @@ use App\Http\Resources\DocumentResource;
 class DocumentController extends Controller
 {
     public function index() {
-        return Document::withCount('document')->get();
+        return DocumentResource::collection(Document::withCount('document')->paginate(5));
     }
 
     public function store(Request $request) {

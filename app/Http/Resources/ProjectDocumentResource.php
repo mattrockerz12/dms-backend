@@ -16,6 +16,7 @@ class ProjectDocumentResource extends JsonResource
     {
         return [
             'document' => $this->document,
+            'latest_upload_by_date' => $this->latest_upload_by_date,
             'project_document_detail_count' => $this->project_document_detail_count,
             'latest_upload_by_date_count' => $this->latest_upload_by_date_count,
         ];
