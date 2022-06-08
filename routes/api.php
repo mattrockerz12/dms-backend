@@ -24,4 +24,5 @@ Route::post('/projects', [ProjectController::class, 'store']);
 Route::put('/projects/{id}', [ProjectController::class, 'update']);
 Route::get('/documents', [DocumentController::class, 'index']);
 Route::post('/documents', [DocumentController::class, 'store']);
+Route::delete('/documents/{id}', [DocumentController::class, 'destroy']);
 

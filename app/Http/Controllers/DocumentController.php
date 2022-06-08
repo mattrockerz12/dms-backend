@@ -14,8 +14,14 @@ class DocumentController extends Controller
     }
 
     public function store(Request $request) {
-        $document = Document::create($request->only('name', 'slug'));
+        $document = Document::create($request->only('name'));
 
         return response($document, Response::HTTP_CREATED);
+    }
+
+    public function destroy($id) {
+        Document::destroy($id);
+
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }
