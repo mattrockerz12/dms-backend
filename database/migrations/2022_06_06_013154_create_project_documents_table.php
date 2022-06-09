@@ -20,7 +20,7 @@ class CreateProjectDocumentsTable extends Migration
             $table->string('name')->nullable();
             $table->string('slug')->nullable();
             $table->integer('user_id')->nullable();
-            $table->foreign('project_id')->references('id')->on('projects');
+            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
             $table->foreign('document_id')->references('id')->on('documents')->onDelete('cascade');
             $table->timestamps();
         });

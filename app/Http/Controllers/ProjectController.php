@@ -56,6 +56,12 @@ class ProjectController extends Controller
         return response(new ProjectResource($project), Response::HTTP_ACCEPTED);
     }
 
+    public function destroy($id) {
+        Project::destroy($id);
+
+        return response(null, Response::HTTP_NO_CONTENT);
+    }
+
     public function permits($id) {
         $cpd = ProjectDocument::where('project_id', $id);
         $project_documents = $cpd->withCount('project_document_detail', 'latest_upload_by_date')->get();

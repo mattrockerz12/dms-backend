@@ -1,0 +1,74 @@
+const Nav = ({ user, setLoggedIn }) => {
+    const logout = async () => {
+        await axios.post('http://localhost:8000/api/logout');
+
+        setLoggedIn();
+    }
+
+    let links;
+
+    if (user) {
+        links = (
+            <ul>
+                <li>
+                    <Link>Logout</Link>
+                </li>
+            </ul>
+        )
+    } else {
+        links = (
+            <ul>
+                <li>
+                    <Link>Login</Link>
+                </li>
+            </ul>
+        )
+    }
+
+    return (
+        <nav>{links}</>
+    )
+}
+
+const App = () => {
+    const [user, setUser] = useState(null);
+    const [loggedIn, setLoggedIn] = useState(false);
+
+    useEffect(() => {
+        (
+            async () => {
+                try {
+                    const { data } = await axios.get('http://localhost:8000/api/user');
+                    setUser(data.data);
+                } catch (e) {
+                    setUser(null);
+                }
+            }
+        )()
+    }, [loggedIn]);
+
+    <Nav user={user} setLoggedIn={() => setLoggedIn(false)} />
+
+    <Route path='/login' element={() => <Login setLoggedIn={() => setLoggedIn(true)} />} />
+}
+
+
+const [logo, setLogo] = useState('')
+
+const upload = (files) => {
+    if (files === null) {
+        return
+    }
+
+    const data = new FormData();
+    data.append('image', files[0]);
+
+    const { data } = await axios.post('http://localhost:8000/api/laragig/upload', data);
+
+    setLogo({
+        logo: data.url
+    })
+}
+
+<input type='file' onChange={upload(e.target.files)} />
+
